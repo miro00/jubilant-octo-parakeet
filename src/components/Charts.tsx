@@ -1,129 +1,101 @@
-import {
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { ResponsiveLine } from "@nivo/line";
+import { ResponsivePie } from "@nivo/pie";
+
+const CenteredMetric = ({
+  centerX,
+  centerY,
+}: {
+  centerX: number;
+  centerY: number;
+}) => {
+
+  return (
+    <text
+      x={centerX}
+      y={centerY}
+      textAnchor="middle"
+      dominantBaseline="central"
+      style={{
+        color: "white"
+      }}
+    >
+      $35.7K
+    </text>
+  );
+};
+
 const Charts = () => {
   const data = [
     {
-      name: "Jan",
-      Revenue: 400,
-      Orders: 240,
+      id: "Revenue",
+      color: "red",
+      data: [{ x: "Jan", y: 155 }],
     },
     {
-      name: "Feb",
-      Revenue: 300,
-      Orders: 139,
-    },
-    {
-      name: "Mar",
-      Revenue: 200,
-      Orders: 280,
-    },
-    {
-      name: "Apr",
-      Revenue: 278,
-      Orders: 390,
-    },
-    {
-      name: "May",
-      Revenue: 189,
-      Orders: 30,
-    },
-    {
-      name: "Jun",
-      Revenue: 239,
-      Orders: 280,
-    },
-    {
-      name: "Aug",
-      Revenue: 349,
-      Orders: 340,
-    },
-    {
-      name: "Sep",
-      Revenue: 300,
-      Orders: 400,
-    },
-    {
-      name: "Oct",
-      Revenue: 290,
-      Orders: 430,
-    },
-    {
-      name: "Nov",
-      Revenue: 349,
-      Orders: 130,
-    },
-    {
-      name: "Dec",
-      Revenue: 349,
-      Orders: 230,
+      id: "Orders",
+      color: "blue",
+      data: [{ x: "Jan", y: 124 }],
     },
   ];
 
-  const data01 = [
-    { name: "Electronics", value: 1700 },
-    { name: "Laptops", value: 300 },
-    { name: "iPhones", value: 200 },
+  // const data01 = [
+  //   { name: "Electronics", value: 1700 },
+  //   { name: "Laptops", value: 300 },
+  //   { name: "iPhones", value: 200 },
+  // ];
+  const data2 = [
+    { id: "Electronics", label: "Electronics", value: 1400, color: "#ef4444" },
+    { id: "Laptops", label: "Laptops", value: 300, color: "#164e63" },
+    { id: "iPhones", label: "iPhones", value: 200, color: "#38bdf8" },
   ];
+
   return (
-    <div className='flex gap-6 h-full'>
-      <div className='w-9/12 rounded-lg bg-gray-800 pl-0 p-4 flex flex-col h-full'>
-        <div className='pl-7 text-lg font-bold'>Revenue vs Orders</div>
-        <div className='h-full flex-1'>
-          <ResponsiveContainer width='100%' height='100%'>
-            <LineChart data={data}>
-              <CartesianGrid strokeDasharray='1' />
-              <XAxis dataKey='name' />
-              <YAxis />
-              <Tooltip
-                wrapperClassName='bg-gray-700'
-                contentStyle={{
-                  backgroundColor: "#374151",
-                }}
-              />
-              <Legend
-                iconType='circle'
-                verticalAlign='top'
-                align='right'
-                formatter={(value) => (
-                  <span className='text-gray-500'>{value}</span>
-                )}
-              />
-              <Line type='monotone' dataKey='Revenue' stroke='#ef4444' />
-              <Line
-                type='monotone'
-                dataKey='Orders'
-                stroke='#a3e635'
-                activeDot={{ r: 8 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+    <div className="flex gap-6">
+      <div className="flex w-9/12 flex-col  rounded-lg bg-gray-800 px-6 py-4">
+        <div className="text-lg font-bold">Revenue vs Orders</div>
+        <div className="flex-1">
+          <ResponsiveLine
+            data={data}
+            xScale={{ type: "point" }}
+            yScale={{ type: "linear", min: "auto", max: "auto" }}
+            axisBottom={{
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: 0,
+            }}
+          />
         </div>
       </div>
-      <div className='flex-1 rounded-lg bg-gray-800 p-4'>
-        <div className='text-lg font-bold'>Sales by category</div>
-        <ResponsiveContainer width='100%' height='93%'>
-          <PieChart>
-            <Legend />
-            <Pie
-              data={data01}
-              dataKey='value'
-              cx='50%'
-              cy='50%'
-              innerRadius={90}
-              fill='#a3e635'
-            />
-          </PieChart>
-        </ResponsiveContainer>
+      <div className="flex-1 rounded-lg bg-gray-800 px-6 py-4">
+        <div className="text-lg font-bold">Sales by category</div>
+        <div className="h-[300px] p-4">
+          <ResponsivePie
+            data={data2}
+            innerRadius={0.7}
+            layers={["arcs", "legends", CenteredMetric]}
+            margin={{
+              bottom: 56,
+            }}
+            colors={{
+              datum: "data.color",
+            }}
+            legends={[
+              {
+                anchor: "bottom",
+                direction: "column",
+                itemWidth: 100,
+                itemHeight: 18,
+                translateY: 56,
+                translateX: 0,
+
+                itemDirection: "left-to-right",
+                itemTextColor: "white",
+                symbolShape: "circle",
+                symbolSize: 6,
+              },
+            ]}
+          />
+        </div>
       </div>
     </div>
   );

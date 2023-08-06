@@ -14,54 +14,79 @@ import {
 
 const Sidebar = () => {
   return (
-    <aside className='w-1/6 border-r border-gray-700 flex flex-col'>
-      <div className='font-bold text-2xl py-8 border-b border-gray-700 rounded-br-[34px] flex gap-2 items-center'>
-        <AcademicCapIcon className='w-5 h-5' />
+    <aside className="flex w-1/6 flex-col border-r border-gray-700">
+      <div className="-mr-[1px] flex items-center gap-2 rounded-br-[34px] border-b border-r border-gray-700 py-8 text-4xl font-bold">
+        <AcademicCapIcon className="h-6 w-6" />
         salence
       </div>
-      <nav className='flex text-lg flex-col border-t border-b border-gray-700 rounded-r-[34px] py-4 flex-1 -mt-[1px] -mb-[1px]'>
-        <a href='#' className='flex gap-4 items-center py-4 font-bold'>
-          <ChartBarIcon className='w-4 h-4 text-primary' /> Overview
+      <nav className="-mb-[1px] -mr-[1px] -mt-[1px] flex flex-1 flex-col rounded-r-[34px] border-b border-r border-t border-gray-700 py-4 text-lg">
+        <a
+          href="#"
+          className="flex items-center gap-4 py-4 font-bold transition-colors hover:text-primary"
+        >
+          <ChartBarIcon className="h-4 w-4 text-primary" /> Overview
         </a>
-        <div className='flex justify-between items-center py-4 pr-8'>
-          <div className='flex gap-4 items-center'>
-            <ShoppingBagIcon className='w-4 h-4' />
+        <div className="flex cursor-pointer items-center justify-between py-4 pr-8">
+          <div className="flex items-center gap-4">
+            <ShoppingBagIcon className="h-4 w-4" />
             Product
           </div>
-          <ChevronDownIcon className='w-5 h-5' />
+          <ChevronDownIcon className="h-5 w-5" />
         </div>
-        <div className='flex justify-between items-center py-4 pr-8'>
-          <div className='flex gap-4 items-center'>
-            <UserIcon className='w-4 h-4' />
+        <div className="flex cursor-pointer items-center justify-between py-4 pr-8">
+          <div className="flex items-center gap-4">
+            <UserIcon className="h-4 w-4" />
             Customers
           </div>
-          <ChevronDownIcon className='w-5 h-5' />
+          <ChevronDownIcon className="h-5 w-5" />
         </div>
-        <a href='#' className='flex justify-between items-center py-4 pr-8'>
-          <div className='flex gap-4 items-center'>
-            <ClipboardDocumentCheckIcon className='w-4 h-4' />
+        <a
+          href="#"
+          className="group group flex items-center justify-between py-4 pr-8 transition-colors"
+        >
+          <div className="flex items-center gap-4 group-hover:text-primary">
+            <ClipboardDocumentCheckIcon className="h-4 w-4" />
             Orders
           </div>
-          <div className='p-1 rounded bg-red-500 w-5 h-5 text-sm flex items-center justify-center'>
+          <div className="flex h-5 w-5 items-center justify-center rounded bg-red-500 p-1 text-sm">
             2
           </div>
         </a>
-        <a href='#' className='flex gap-4 items-center py-4'>
-          <ShoppingCartIcon className='w-4 h-4' />
+        <a
+          href="#"
+          className="flex items-center gap-4 py-4 transition-colors hover:text-primary"
+        >
+          <ShoppingCartIcon className="h-4 w-4" />
           Checkout
         </a>
-        <a href='#' className='flex gap-4 items-center py-4'>
-          <Cog6ToothIcon className='w-4 h-4' />
+        <a
+          href="#"
+          className="flex items-center gap-4 py-4 transition-colors hover:text-primary"
+        >
+          <Cog6ToothIcon className="h-4 w-4" />
           Settings
         </a>
       </nav>
-      <div className='flex flex-col py-4 mt-auto border-t border-gray-700 rounded-tr-[34px] text-lg'>
-        <div className='flex gap-4 items-center py-4'>Help</div>
-        <div className='flex gap-4 items-center py-4'>Contact us</div>
-        <div className='flex gap-4 items-center py-4'>
-          <ArrowRightOnRectangleIcon className='w-4 h-4' />
+      <div className="-mr-[1px] mt-auto flex flex-col rounded-tr-[34px] border-r border-t border-gray-700 py-4 text-lg">
+        <a
+          href="#"
+          className="flex items-center gap-4 py-4 transition-colors hover:text-primary"
+        >
+          Help
+        </a>
+        <a
+          href="#"
+          className="flex items-center gap-4 py-4 transition-colors hover:text-primary"
+        >
+          Contact us
+        </a>
+        <a
+          href="#"
+          className="flex items-center gap-4 py-4 transition-colors hover:text-primary"
+        >
+          <ArrowRightOnRectangleIcon className="h-4 w-4" />
           Log out
-        </div>
+        </a>
       </div>
     </aside>
   );
